@@ -25,7 +25,9 @@ services:
       - key: DJANGO_SUPERUSER_USERNAME
         value: vcelir2
       - key: DJANGO_SUPERUSER_PASSWORD
-        value: 0942445743
+        value: admin123
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: vcelir2@unemi.edu.ec  # <-- este faltaba
 
     postDeployCommand: |
       # Ejecutar las migraciones de la base de datos
