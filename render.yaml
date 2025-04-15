@@ -23,11 +23,9 @@ services:
           name: portafolio-db
           property: connectionString
       - key: DJANGO_SUPERUSER_USERNAME
-        value: admin
-      - key: DJANGO_SUPERUSER_EMAIL
-        value: vcelir2@unemi.edu.ec
+        value: vcelir2
       - key: DJANGO_SUPERUSER_PASSWORD
-        value: admin123
+        value: 0942445743
 
     postDeployCommand: |
       # Ejecutar las migraciones de la base de datos

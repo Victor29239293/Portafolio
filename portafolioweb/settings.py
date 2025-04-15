@@ -26,9 +26,11 @@ SECRET_KEY = 'django-insecure-d)%d*yqtou63y&_gtr!+0e#1uy7xe6jpfq@z-qr#xnm0d6uvd$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Seguridad
-DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("RENDER_EXTERNAL_HOSTNAME", "").split(",") if "RENDER_EXTERNAL_HOSTNAME" in os.environ else []
+# DEBUG = os.getenv("DEBUG", "False") == "True"
+# ALLOWED_HOSTS = os.getenv("RENDER_EXTERNAL_HOSTNAME", "").split(",") if "RENDER_EXTERNAL_HOSTNAME" in os.environ else []
 
+DEBUG = True
+ALLOWED_HOSTS = []
 
 
 INTERNAL_IPS = [
