@@ -3,10 +3,20 @@ services:
     name: portafolio
     env: python
     buildCommand: |
+      # Instalar dependencias de Python
       pip install -r requirements.txt
+
+      # Compilar los archivos estáticos de Tailwind si los estás manejando a través de npm
+      npm install   # Instala las dependencias de Node (si usas npm para Tailwind)
+      npm run build # O cualquier otro comando de compilación Tailwind que uses
+
+      # Ejecutar collectstatic para mover los archivos estáticos de Django al directorio adecuado
       python manage.py collectstatic --no-input
+
     startCommand: gunicorn portafolioweb.wsgi:application
+
     autoDeploy: true
+
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -18,8 +28,12 @@ services:
         value: vcelir2@unemi.edu.ec
       - key: DJANGO_SUPERUSER_PASSWORD
         value: admin123
+
     postDeployCommand: |
+      # Ejecutar las migraciones de la base de datos
       python manage.py migrate
+
+      # Crear el superusuario si no existe
       echo "from django.contrib.auth import get_user_model;
             User = get_user_model();
             User.objects.filter(username='$DJANGO_SUPERUSER_USERNAME').exists() or 

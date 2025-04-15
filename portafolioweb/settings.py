@@ -25,9 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-d)%d*yqtou63y&_gtr!+0e#1uy7xe6jpfq@z-qr#xnm0d6uvd$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Seguridad
+DEBUG = os.getenv("DEBUG", "False") == "True"
+ALLOWED_HOSTS = os.getenv("RENDER_EXTERNAL_HOSTNAME", "").split(",") if "RENDER_EXTERNAL_HOSTNAME" in os.environ else []
 
-ALLOWED_HOSTS = ['*']
 
 
 INTERNAL_IPS = [
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,6 +131,8 @@ NPM_BIN_PATH = r'C:\Users\Victor Celi\AppData\Roaming\npm\npm.cmd'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+# WhiteNoise para servir archivos estáticos
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # <- necesario para Render
