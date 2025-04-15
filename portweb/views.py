@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView ,DetailView
 from portweb.models import Proyecto
+from django.core.mail import send_mail
+from django.contrib import messages
 
 
 

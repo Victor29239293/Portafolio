@@ -107,13 +107,13 @@
                 >My Portafolio</a
               >
             </li>
-            <li>
+            {% comment %} <li>
               <a
                 href="#contact"
                 class="block py-2 px-3 text-white hover:text-blue-500 text-lg font-bold"
                 >Contact</a
               >
-            </li>
+            </li> {% endcomment %}
           </ul>
         </div>
       </div>
@@ -164,7 +164,7 @@
             <span class="font-bold">GitHub</span>
           </a>
           <a
-            href="https://www.facebook.com/victor.celi.777/"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center space-x-3 text-gray-300 hover:text-blue-600 transition duration-300"
@@ -190,7 +190,7 @@
         class="w-full md:w-1/2 flex flex-col items-center fade-in mt-10 md:mt-0"
       >
         <img
-          src="{% static "/images/images.png" %}"
+          src="{% static "/images/images.jpg" %}"
           alt="Profile"
           class="w-72 h-72 sm:w-80 sm:h-80 rounded-lg shadow-xl object-cover"
         />
@@ -426,7 +426,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section
+    {% comment %} <section
       id="contact"
       class="py-20 px-6 bg-gray-900 text-white text-center fade-in"
     >
@@ -444,7 +444,8 @@
       </div>
 
       <div class="mt-10 max-w-lg mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
-        <form action="#" method="POST" class="space-y-6">
+        <form action="{% url 'contacto'%}" method="POST" class="space-y-6">
+          {% csrf_token %}
           <div>
             <label for="name" class="block text-left text-gray-300 font-medium"
               >Nombre</label
@@ -496,7 +497,7 @@
       </div>
 
      
-    </section>
+    </section> {% endcomment %}
     {% endblock content %}
     <!-- Footer -->
 <footer class="bg-gray-800 text-gray-400 py-8">
@@ -528,7 +529,7 @@
           <i class="fab fa-instagram fa-lg"></i>
         </a>
         <a
-          href="mailto:victorceli@example.com"
+          href="mailto:v"
           class="hover:text-gray-200 transition duration-300"
         >
           <i class="fas fa-envelope fa-lg"></i>
