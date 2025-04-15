@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div
+  class="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-900"
+>
+  <div class="w-full max-w-2xl">
+    <div class="flex justify-center">
+      <div
+        class="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 w-full max-w-2xl"
+      >
+        <!-- Título y subtítulo -->
+        <div class="mt-6 text-center">
+          <p class="text-lg text-pink-500 font-semibold">
+            {{ proyecto.titulo }}
+          </p>
+          <h2 class="text-2xl font-bold mt-2 mb-4 text-white">
+            {{ proyecto.subtitulo }}
+          </h2>
+          
+        </div>
+        <!-- Imagen del proyecto -->
+        <img
+          src="{{ proyecto.imagen.url }}"
+          alt="{{ proyecto.titulo }}"
+          class="rounded-lg w-full object-cover"
+          style="aspect-ratio: 1200/799"
+        />
+
+        <!-- Descripción -->
+        <p class="text-gray-400 mt-4 text-base leading-relaxed text-center">
+          {{ proyecto.descripcion }}
+        </p>
+
+        <!-- Características -->
+        <div class="mt-4">
+          <h3 class="text-lg font-semibold text-white">Características:</h3>
+          <ul class="text-gray-300 text-sm list-disc pl-6">
+            {% for caracteristica in proyecto.características.splitlines %}
+            <li>{{ caracteristica }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- Tecnologías utilizadas -->
+        <div class="mt-4">
+          <h3 class="text-lg font-semibold text-white">Tecnologías:</h3>
+          <p class="text-gray-300 text-sm">{{ proyecto.tecnologias }}</p>
+        </div>
+
+        <!-- Enlace del proyecto -->
+        {% if proyecto.enlace %}
+        <div class="mt-6 text-center">
+          <a
+            href="{{ proyecto.enlace }}"
+            target="_blank"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-500 transition duration-300 flex items-center justify-center space-x-2"
+          >
+            <i class="fab fa-github text-xl"></i>
+            <span>Ver en GitHub</span>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
